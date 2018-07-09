@@ -30,10 +30,11 @@ namespace Neeroga
         {
             try 
             {
-                SqlCommand selectCommand = new SqlCommand("Select User_Type from Users where User_Name=@UserName and Password=@Password", conn);
+                SqlCommand selectCommand = new SqlCommand("Select User_Type, User_Id from Users where User_Name=@UserName and Password=@Password", conn);
                 selectCommand.Parameters.Add(new SqlParameter("UserName", username.Text.ToString()));
                 selectCommand.Parameters.Add(new SqlParameter("Password", password.Text.ToString()));
                 string userType = null;
+                string userId = null;
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 bool rowFound = reader.HasRows;
                 if (rowFound)
@@ -41,9 +42,11 @@ namespace Neeroga
                     while (reader.Read())
                     {
                         userType = reader[0].ToString().Trim();
+                        userId = reader[1].ToString().Trim();
                         this.Hide();
                         Home objHome = new Home();
                         objHome.User.Text = username.Text;
+                        objHome.lblUserId.Text = userId;
                         objHome.UserType.Text = userType;
                         objHome.Show();
 

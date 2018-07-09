@@ -22,3 +22,15 @@ E:\Maliq\My\WAD\Neeroga\Neeroga\obj\Debug\Neeroga.Home.resources
 E:\Maliq\My\WAD\Neeroga\Neeroga\obj\Debug\Neeroga.Login.resources
 E:\Maliq\My\WAD\Neeroga\Neeroga\obj\Debug\Neeroga.Properties.Resources.resources
 E:\Maliq\My\WAD\Neeroga\Neeroga\obj\Debug\Neeroga.csproj.GenerateResource.Cache
+E:\git\Neeroga\Neeroga\bin\Debug\Neeroga.exe.config
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.exe
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.pdb
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.csprojResolveAssemblyReference.cache
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.FrmAppointment.resources
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.FrmUsers.resources
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.Home.resources
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.Login.resources
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.Properties.Resources.resources
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.csproj.GenerateResource.Cache
+E:\git\Neeroga\Neeroga\bin\Debug\Neeroga.exe
+E:\git\Neeroga\Neeroga\bin\Debug\Neeroga.pdb

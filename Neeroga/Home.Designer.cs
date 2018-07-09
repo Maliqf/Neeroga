@@ -30,8 +30,10 @@
         {
             System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.User = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.UserType = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +44,7 @@
             this.appointmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSRecord = new System.Windows.Forms.ToolStripMenuItem();
-            this.User = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Time = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUserId = new System.Windows.Forms.Label();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -72,6 +73,15 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // User
+            // 
+            this.User.AutoSize = false;
+            this.User.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.User.Image = global::Neeroga.Properties.Resources.users_icon;
+            this.User.Name = "User";
+            this.User.Size = new System.Drawing.Size(60, 15);
+            this.User.Text = "User";
+            // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
@@ -84,6 +94,15 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(135, 15);
             this.toolStripStatusLabel2.Text = "Current Session Started at";
+            // 
+            // Time
+            // 
+            this.Time.AutoSize = false;
+            this.Time.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Time.Image = global::Neeroga.Properties.Resources.timer_512;
+            this.Time.Name = "Time";
+            this.Time.Size = new System.Drawing.Size(130, 15);
+            this.Time.Text = "Time";
             // 
             // UserType
             // 
@@ -161,6 +180,7 @@
             this.appointmentsToolStripMenuItem.Name = "appointmentsToolStripMenuItem";
             this.appointmentsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.appointmentsToolStripMenuItem.Text = "Appointments";
+            this.appointmentsToolStripMenuItem.Click += new System.EventHandler(this.appointmentsToolStripMenuItem_Click);
             // 
             // consultantsToolStripMenuItem
             // 
@@ -175,29 +195,24 @@
             this.TSRecord.Size = new System.Drawing.Size(75, 20);
             this.TSRecord.Text = "&Record";
             // 
-            // User
+            // lblUserId
             // 
-            this.User.AutoSize = false;
-            this.User.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User.Image = global::Neeroga.Properties.Resources.users_icon;
-            this.User.Name = "User";
-            this.User.Size = new System.Drawing.Size(60, 15);
-            this.User.Text = "User";
-            // 
-            // Time
-            // 
-            this.Time.AutoSize = false;
-            this.Time.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Image = global::Neeroga.Properties.Resources.timer_512;
-            this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(130, 15);
-            this.Time.Text = "Time";
+            this.lblUserId.AutoSize = true;
+            this.lblUserId.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUserId.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblUserId.Location = new System.Drawing.Point(12, 341);
+            this.lblUserId.Name = "lblUserId";
+            this.lblUserId.Size = new System.Drawing.Size(10, 13);
+            this.lblUserId.TabIndex = 8;
+            this.lblUserId.Text = ".";
+            this.lblUserId.Visible = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 411);
+            this.Controls.Add(this.lblUserId);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.UserType);
             this.Controls.Add(this.statusStrip1);
@@ -232,5 +247,6 @@
         private System.Windows.Forms.ToolStripMenuItem appointmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem;
+        public System.Windows.Forms.Label lblUserId;
     }
 }

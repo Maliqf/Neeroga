@@ -58,18 +58,40 @@ namespace Neeroga
         {
             FrmAppointment FrmAppiont = new FrmAppointment();
             FrmAppiont.MdiParent = this;
-            if (UserType.Text == "Admin")
+            string selectVal = "";
+
+            if (UserType.Text == "T001")//Admin
             {
                 FrmAppiont.label7.Text = UserType.Text;
+                selectVal = "Select User_Id, User_Name from Users where User_Type='T004'";
                 //FrmAppiont.txtPatientNme.ReadOnly = true;
             }
             else
             {
                 FrmAppiont.label7.Text = UserType.Text;
-                FrmAppiont.txtPatientNme.ReadOnly = true;
+                selectVal = "Select User_Id, User_Name from Users where User_Id='" + lblUserId.Text.ToString() + "'";
+                //FrmAppiont.txtPatientNme.ReadOnly = true;
             }
-            FrmAppiont.txtPatientNme.Text = User.Text;
+
+            //Load Speacialization
+            SqlCommand selectUsr = new SqlCommand(selectVal, conn);
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = selectUsr;
+            DataTable dt_Usr = new DataTable();
+            SqlDataReader reader = selectUsr.ExecuteReader();
+            dt_Usr.Load(reader);
+            reader.Close();
+            FrmAppiont.CmbPatient.DataSource = dt_Usr;
+            FrmAppiont.CmbPatient.ValueMember = "User_Id";
+            FrmAppiont.CmbPatient.DisplayMember = "User_Name";
+            //FrmAppiont.txtPatientNme.Text = User.Text;
+            //FrmAppiont.txtPatientNme.Text = lblUserId.Text;
             FrmAppiont.Show();
+        }
+
+        private void appointmentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
