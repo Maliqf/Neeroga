@@ -51,6 +51,12 @@
     <Compile Include="FrmAppointment.Designer.cs">
       <DependentUpon>FrmAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDrSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDrSchedule.Designer.cs">
+      <DependentUpon>FrmDrSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAppointment.resx">
       <DependentUpon>FrmAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDrSchedule.resx">
+      <DependentUpon>FrmDrSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUsers.resx">
       <DependentUpon>FrmUsers.cs</DependentUpon>
