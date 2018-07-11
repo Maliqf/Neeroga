@@ -34,3 +34,4 @@ E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.Properties.Resources.resources
 E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.csproj.GenerateResource.Cache
 E:\git\Neeroga\Neeroga\bin\Debug\Neeroga.exe
 E:\git\Neeroga\Neeroga\bin\Debug\Neeroga.pdb
+E:\git\Neeroga\Neeroga\obj\Debug\Neeroga.FrmDrSchedule.resources

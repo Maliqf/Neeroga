@@ -74,17 +74,17 @@ namespace Neeroga
             CmbHospital.ValueMember = "Hospital_Id";
             CmbHospital.DisplayMember = "Hospital_Name";
 
-            //Load Timeslot
-            SqlCommand selectSlot = new SqlCommand("Select Slot_Id, Slot_Time from Time_Slot", conn);
-            SqlDataAdapter sda2 = new SqlDataAdapter();
-            sda2.SelectCommand = selectSlot;
-            DataTable dt_Slot = new DataTable();
-            reader = selectSlot.ExecuteReader();
-            dt_Slot.Load(reader);
-            reader.Close();
-            CmbSlot.DataSource = dt_Slot;
-            CmbSlot.ValueMember = "Slot_Id";
-            CmbSlot.DisplayMember = "Slot_Time";
+            ////Load Timeslot
+            //SqlCommand selectSlot = new SqlCommand("Select Slot_Id, Slot_Time from Time_Slot", conn);
+            //SqlDataAdapter sda2 = new SqlDataAdapter();
+            //sda2.SelectCommand = selectSlot;
+            //DataTable dt_Slot = new DataTable();
+            //reader = selectSlot.ExecuteReader();
+            //dt_Slot.Load(reader);
+            //reader.Close();
+            //CmbSlot.DataSource = dt_Slot;
+            //CmbSlot.ValueMember = "Slot_Id";
+            //CmbSlot.DisplayMember = "Slot_Time";
 
         }
 
@@ -152,9 +152,10 @@ namespace Neeroga
 
         void list_doctors()
         {
-
+            string dayToCheck = AppointDate.Value.DayOfWeek.ToString();
+            
             //Load Doctors
-            SqlCommand selectAv = new SqlCommand("Select Doctor_Id, DrAvailability_Id from DoctorAvailability where Day='Monday'", conn);
+            SqlCommand selectAv = new SqlCommand("Select Doctor_Id, DrAvailability_Id from DoctorAvailability where Day='" + dayToCheck + "' and Catogary_Id='" + CmbSpecial.SelectedValue + "'", conn);
             SqlDataAdapter sda = new SqlDataAdapter();
             sda.SelectCommand = selectAv;
             DataTable dt_Av = new DataTable();
@@ -162,8 +163,119 @@ namespace Neeroga
             dt_Av.Load(reader);
             reader.Close();
             CmbDoctor.DataSource = dt_Av;
+            //DataRow dr = dt_Av.NewRow();
+            //dr[0] = "";
+            //dr[1] = "";      
+            
+            //dt_Av.Rows.InsertAt(dr, 0);
             CmbDoctor.ValueMember = "DrAvailability_Id";
             CmbDoctor.DisplayMember = "Doctor_Id";
+            //CmbDoctor.SelectedIndex = -1;
+            CmbSlot.DataSource = null;
+            CmbSlot.Items.Clear();
         }
+
+        private void CmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //list_slots();
+        }
+
+        void list_slots()
+        {
+            CmbSlot.DataSource = null;
+            CmbSlot.Items.Clear();
+            try 
+            {
+
+                Application.DoEvents();
+            if (CmbDoctor.SelectedValue != null)
+            {
+            //Get Doctors Schedule
+            SqlCommand selectCommand = new SqlCommand("Select Start_time, End_time from DoctorAvailability where DrAvailability_Id=@DrAva_Id", conn);
+
+            string count = CmbDoctor.SelectedValue.ToString();
+            selectCommand.Parameters.Add(new SqlParameter("@DrAva_Id", CmbDoctor.SelectedValue));
+            string stTime = null;
+            string endTime = null;
+
+            SqlDataAdapter da = new SqlDataAdapter(selectCommand);
+            DataTable dt = new DataTable();
+                da.Fill(dt);
+
+            SqlDataReader reader = selectCommand.ExecuteReader();
+            bool rowFound = reader.HasRows;
+            if (rowFound)
+            {
+                while (reader.Read())
+                {
+                    stTime = reader[0].ToString().Trim();
+                    endTime = reader[1].ToString().Trim();
+                }
+            }
+            reader.Close();
+
+            SqlCommand selectSlot = new SqlCommand("SELECT *  FROM Time_Slot WHERE CAST(Slot_Time AS TIME) BETWEEN @stTime AND @endTime", conn);
+            selectSlot.Parameters.Add(new SqlParameter("stTime", stTime));
+            selectSlot.Parameters.Add(new SqlParameter("endTime", endTime));
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = selectSlot;
+            DataTable dt_slot = new DataTable();
+            reader = selectSlot.ExecuteReader();
+            dt_slot.Load(reader);
+            reader.Close();
+
+            //Filter Slots from Appointment
+            string A_date = Convert.ToDateTime(AppointDate.Value.Date).ToString("yyyy-MM-dd");
+            SqlCommand selectSlotApp = new SqlCommand("SELECT Slot_Id FROM Appointments WHERE DrAvailability_Id=@DrAvId and Date=@AppDate", conn);
+            selectSlotApp.Parameters.Add(new SqlParameter("DrAvId", CmbDoctor.SelectedValue));
+            selectSlotApp.Parameters.Add(new SqlParameter("AppDate", A_date));
+
+            SqlDataAdapter sda1 = new SqlDataAdapter(selectSlotApp);
+            //sda1.SelectCommand = selectSlotApp;
+            DataTable dt_slotApp = new DataTable();
+            //reader = selectSlotApp.ExecuteReader();
+            //dt_slotApp.Load(reader);
+            //reader.Close();
+
+            sda1.Fill(dt_slotApp);
+
+            foreach (DataRow row in dt_slot.Rows)
+            {
+                string Sl_id = row["Slot_Id"].ToString();
+                string find = "Slot_Id = '" + Sl_id + "'";
+                DataRow[] foundRows = dt_slotApp.Select(find);
+                if(foundRows.Length > 0)
+                {
+                    row.Delete();
+                }
+                
+            }
+                dt_slot.AcceptChanges();
+
+
+                if (dt_slot.Rows.Count == 0)
+                {
+                    MessageBox.Show("No slots left for selected doctor", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    CmbSlot.DataSource = dt_slot;
+                    CmbSlot.ValueMember = "Slot_Id";
+                    CmbSlot.DisplayMember = "Slot_Time";
+                }          
+
+
+            }
+          }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            list_slots();
+        }        
     }
 }

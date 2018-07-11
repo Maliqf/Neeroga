@@ -45,6 +45,8 @@
             this.consultantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSRecord = new System.Windows.Forms.ToolStripMenuItem();
             this.lblUserId = new System.Windows.Forms.Label();
+            this.editSheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.patienRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -134,6 +136,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bookToolStripMenuItem,
+            this.editSheduleToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Image = global::Neeroga.Properties.Resources.document_icon1;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -190,6 +193,8 @@
             // 
             // TSRecord
             // 
+            this.TSRecord.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.patienRecordToolStripMenuItem});
             this.TSRecord.Image = global::Neeroga.Properties.Resources.reports;
             this.TSRecord.Name = "TSRecord";
             this.TSRecord.Size = new System.Drawing.Size(75, 20);
@@ -206,6 +211,19 @@
             this.lblUserId.TabIndex = 8;
             this.lblUserId.Text = ".";
             this.lblUserId.Visible = false;
+            // 
+            // editSheduleToolStripMenuItem
+            // 
+            this.editSheduleToolStripMenuItem.Name = "editSheduleToolStripMenuItem";
+            this.editSheduleToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.editSheduleToolStripMenuItem.Text = "Edit Shedule";
+            this.editSheduleToolStripMenuItem.Click += new System.EventHandler(this.editSheduleToolStripMenuItem_Click);
+            // 
+            // patienRecordToolStripMenuItem
+            // 
+            this.patienRecordToolStripMenuItem.Name = "patienRecordToolStripMenuItem";
+            this.patienRecordToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.patienRecordToolStripMenuItem.Text = "Patient Record";
             // 
             // Home
             // 
@@ -248,5 +266,7 @@
         private System.Windows.Forms.ToolStripMenuItem consultantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem;
         public System.Windows.Forms.Label lblUserId;
+        private System.Windows.Forms.ToolStripMenuItem editSheduleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem patienRecordToolStripMenuItem;
     }
 }

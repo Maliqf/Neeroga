@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CmbPatient = new System.Windows.Forms.ComboBox();
             this.CmbSpecial = new System.Windows.Forms.ComboBox();
             this.CmbSlot = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@
             this.txtAppointId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.CmbPatient = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.CmbPatient);
             this.groupBox1.Controls.Add(this.CmbSpecial);
             this.groupBox1.Controls.Add(this.CmbSlot);
@@ -102,13 +104,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Book an Appointment";
             // 
+            // CmbPatient
+            // 
+            this.CmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbPatient.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmbPatient.FormattingEnabled = true;
+            this.CmbPatient.Location = new System.Drawing.Point(117, 65);
+            this.CmbPatient.Name = "CmbPatient";
+            this.CmbPatient.Size = new System.Drawing.Size(271, 23);
+            this.CmbPatient.TabIndex = 2;
+            // 
             // CmbSpecial
             // 
             this.CmbSpecial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSpecial.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbSpecial.FormattingEnabled = true;
-            this.CmbSpecial.Items.AddRange(new object[] {
-            "Maliq"});
             this.CmbSpecial.Location = new System.Drawing.Point(118, 105);
             this.CmbSpecial.Name = "CmbSpecial";
             this.CmbSpecial.Size = new System.Drawing.Size(271, 23);
@@ -119,11 +129,9 @@
             this.CmbSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSlot.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbSlot.FormattingEnabled = true;
-            this.CmbSlot.Items.AddRange(new object[] {
-            "General Hospital"});
             this.CmbSlot.Location = new System.Drawing.Point(118, 299);
             this.CmbSlot.Name = "CmbSlot";
-            this.CmbSlot.Size = new System.Drawing.Size(271, 23);
+            this.CmbSlot.Size = new System.Drawing.Size(190, 23);
             this.CmbSlot.TabIndex = 19;
             // 
             // label8
@@ -160,7 +168,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(118, 369);
+            this.button1.Location = new System.Drawing.Point(144, 369);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 27);
             this.button1.TabIndex = 12;
@@ -202,8 +210,6 @@
             this.CmbHospital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbHospital.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbHospital.FormattingEnabled = true;
-            this.CmbHospital.Items.AddRange(new object[] {
-            "General Hospital"});
             this.CmbHospital.Location = new System.Drawing.Point(118, 152);
             this.CmbHospital.Name = "CmbHospital";
             this.CmbHospital.Size = new System.Drawing.Size(271, 23);
@@ -239,6 +245,7 @@
             this.CmbDoctor.Name = "CmbDoctor";
             this.CmbDoctor.Size = new System.Drawing.Size(271, 23);
             this.CmbDoctor.TabIndex = 3;
+            this.CmbDoctor.SelectedIndexChanged += new System.EventHandler(this.CmbDoctor_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -280,17 +287,16 @@
             this.tabPage2.Text = "View Appointment";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // CmbPatient
+            // button2
             // 
-            this.CmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbPatient.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmbPatient.FormattingEnabled = true;
-            this.CmbPatient.Items.AddRange(new object[] {
-            "Maliq"});
-            this.CmbPatient.Location = new System.Drawing.Point(117, 65);
-            this.CmbPatient.Name = "CmbPatient";
-            this.CmbPatient.Size = new System.Drawing.Size(271, 23);
-            this.CmbPatient.TabIndex = 2;
+            this.button2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(314, 297);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 27);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Load Slots";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmAppointment
             // 
@@ -333,6 +339,7 @@
         private System.Windows.Forms.ComboBox CmbSlot;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.ComboBox CmbPatient;
+        private System.Windows.Forms.Button button2;
 
     }
 }

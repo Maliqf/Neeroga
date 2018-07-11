@@ -107,6 +107,7 @@ namespace Neeroga
             CmbUtype.DataSource = dt_usrT;
             CmbUtype.ValueMember = "UserTypeId";
             CmbUtype.DisplayMember = "UserType";
+            CmbUtype.SelectedIndex = -1;
 
         }
 

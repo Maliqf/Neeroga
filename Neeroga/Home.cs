@@ -44,7 +44,7 @@ namespace Neeroga
             }
             else if (UserType.Text == "Doctor")
             {
-                TStripMge.Visible = false;
+                //TStripMge.Visible = false;
             }
             this.Time.Text = System.DateTime.Now.ToString();
         }
@@ -92,6 +92,14 @@ namespace Neeroga
         private void appointmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        
+        private void editSheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDrSchedule FrmShedule = new FrmDrSchedule();
+            FrmShedule.TxtUID.Text = lblUserId.Text;
+            FrmShedule.Show();
         }
     }
 }

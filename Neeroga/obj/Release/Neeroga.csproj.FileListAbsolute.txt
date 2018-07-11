@@ -1,0 +1,12 @@
+E:\git\Neeroga\Neeroga\bin\Release\Neeroga.exe.config
+E:\git\Neeroga\Neeroga\bin\Release\Neeroga.exe
+E:\git\Neeroga\Neeroga\bin\Release\Neeroga.pdb
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.FrmAppointment.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.FrmDrSchedule.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.FrmUsers.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.Home.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.Login.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.Properties.Resources.resources
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.csproj.GenerateResource.Cache
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.exe
+E:\git\Neeroga\Neeroga\obj\Release\Neeroga.pdb
